@@ -1,0 +1,33 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Contact{% endblock%}
+
+{% block body %}
+	<div class="panel panel-default">
+		<div class="panel-heading">			
+			<p id="title-article"><h2 id="title" >Contact Reading Passion</h2></p>
+			<hr>
+			<p>Vous voulez contacter Reading Passion ?</p>
+		</div>
+	
+	<div class="panel-body">
+		<form class="form-horizontal" action="{{ path('BloggerBlogBundle_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
+			{{ form_errors(form) }}
+			
+			<p>{{ form_label(form.name, 'Nom', {'label_attr': {'class': 'foo'}}) }}</p>
+			<p>{{ form_widget(form.name, {'attr': {'class': 'foo'}}) }}</p>			
+			<p>{{ form_label(form.email, 'Email', {'label_attr': {'class': 'foo'}}) }}</p>	
+			<p>{{ form_widget(form.email, {'attr': {'class': 'foo'}}) }}</p>
+			<p>{{ form_label(form.subject, 'Sujet', {'label_attr': {'class': 'foo'}}) }}</p>	
+			<p>{{ form_widget(form.subject, {'attr': {'class': 'foo'}}) }}</p></p>	
+			<p>{{ form_label(form.body, 'Message', {'label_attr': {'class': 'foo'}}) }}</p>	
+			<p>{{ form_widget(form.body, {'attr': {'class': 'foo'}}) }}</p>
+			
+			{{ form_rest(form) }}
+
+			<input type="submit" class="btn btn-warning" value="Soumettre" style="margin-top:25px;" />
+		</form>
+	</div>
+</div>  
+
+{% endblock %}

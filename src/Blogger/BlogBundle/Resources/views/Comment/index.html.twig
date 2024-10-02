@@ -1,0 +1,18 @@
+{# src/Blogger/BlogBundle/Resources/public/views/Comment/index.html.twig #}
+
+{% for comment in comments %}
+	<div class="panel-heading">
+		<p><span class="highlight">{{ comment.user }}</span> </p>
+		<hr>
+		<p id="title-article"><h2 id="title" >commentaire du <time datetime="{{ comment.created|date('c') }}">{{ comment.created|created_ago }}</time></h2></p>
+		<hr>
+	</div>
+	
+	<div class="panel-body">
+		<div>{{ comment.comment }}</div>		
+	</div>
+	
+	<hr>    
+{% else %}
+    <p>Il n'y pas de commentaires pour ce post. Soyez le premier à le commenter...</p>
+{% endfor %}

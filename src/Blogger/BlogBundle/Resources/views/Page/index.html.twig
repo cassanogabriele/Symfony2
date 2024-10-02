@@ -1,0 +1,32 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/index.html.twig #}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for blog in blogs %}
+        <article class="blog">
+			<div class="panel-heading">
+				<p class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></p>
+				<p id="title-article"><h2><a id="title" href="{{ path('BloggerBlogBundle_blog_show', { 'id': blog.id, 'slug': blog.slug  }) }}">{{ blog.title }}</a></h2></p>
+			</div>
+					
+			<div class="panel-body" id="footer-bloc">		
+				<div id="article">
+					<p id="post">{{ blog.blog(500) }}</p>
+					<p class="continue" style="margin-top:25px;"><a href="{{ path('BloggerBlogBundle_blog_show', { 'id': blog.id ,'slug': blog.slug}) }}">Lire plus...</a></p>
+				</div>
+			</div>
+
+           <footer class="meta" id="footer-bloc">
+				<div class="panel-body">		
+					<div id="article" >
+						<p>Commentaires : <a href="{{ path('BloggerBlogBundle_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}#comments">{{ blog.comments|length }}</a></p>
+						<p>Créé par <span class="highlight">{{ blog.author }}</span> at {{ blog.created|date('h:iA') }}</p>
+						<p>Tags : <span class="highlight">{{ blog.tags }}</span></p>
+					</div>
+				</div>
+			</footer>
+        </article>
+    {% else %}
+        <p>There are no blog entries for symblog</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{# src/Blogger/BlogBundle/Resources/public/views/Comment/form.html.twig #}
+
+<form action="{{ path('BloggerBlogBundle_comment_create', { 'blog_id' : comment.blog.id } ) }}" method="post" {{ form_enctype(form) }} class="blogger">
+	<p>{{ form_label(form.user, 'Utilisateur', {'label_attr': {'class': 'foo'}}) }}{{ form_widget(form.user, {'attr': {'class': 'foo'}}) }}</p>
+	<p>{{ form_label(form.comment, 'Commentaire', {'label_attr': {'class': 'foo'}}) }}{{ form_widget(form.comment, {'attr': {'class': 'foo'}}) }}</p>
+	
+    <p style="margin-top:20px;">
+        <input type="submit" value="Soumettre">
+    </p>
+</form>

@@ -1,0 +1,39 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/sidebar.html.twig #}
+
+<section class="section">
+    <header class="section">       
+		<div class="date"><h2 id="title-tags">Tags</h2></div>
+    </header>
+	
+	{% for tag, weight in tags %}
+		<ul>
+			<li><span id="comments-sidebar">{{ tag }}</span></li>
+		</ul>
+     {% else %}
+         <p>Il n'y a pas de tags.</p>
+     {% endfor %}
+    </p>
+</section>
+
+<section class="section">
+    <header class="section">
+		<div class="date"><h2 id="title-tags">Derniers commentaires</h2></div>
+    </header>
+	
+    {% for comment in latestComments %}
+        <article class="comment">
+            <header>
+                <p ><span class="highlight">{{ comment.user }}</span> a commenté
+                    <a href="{{ path('BloggerBlogBundle_blog_show', { 'id': comment.blog.id, 'slug': comment.blog.slug }) }}#comment-{{ comment.id }}">
+                        {{ comment.blog.title }}
+                    </a>
+                    [<em><time datetime="{{ comment.created|date('c') }}">{{ comment.created|created_ago }}</time></em>]
+                </p>
+            </header>
+            <p id="comments-sidebar">{{ comment.comment }}</p>
+            </p>
+        </article>
+    {% else %}
+        <p>There are no recent comments</p>
+    {% endfor %}
+</section>

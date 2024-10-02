@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bienvenue sur ma premi&egrave;re page avec le Site du Z&eacute;ro
+!</title>
+</head>
+<body>
+<h1>Suppression d'un artilce</h1>
+<p>
+{# On affiche tous les messages flash dont le nom est « info
+» #}
+{% for message in app.session.flashbag.get('info') %}
+<p>{{ message }}</p>
+{% endfor %}
+</p>
+<p>
+Cet article &agrave; bien &eacute;t&eacute; supprim&eacute;
+</p>
+</body>
+</html>

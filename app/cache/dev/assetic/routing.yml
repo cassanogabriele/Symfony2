@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /var/www/clients/client0/web2/web/app/config/routing_dev.yml

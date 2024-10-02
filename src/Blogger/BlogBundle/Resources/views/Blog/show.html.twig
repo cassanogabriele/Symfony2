@@ -1,0 +1,36 @@
+{# src/Blogger/BlogBundle/Resouces/views/Blog/show.html.twig #}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block body %}
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></p>
+		<p id="title-article"><h2 id="title" >{{ blog.title }}</h2></p>
+    </div>
+	
+	<div class="panel-body">
+		<div id="article" style="">{{ blog.blog }}</div>
+	</div>
+	 
+	<hr>
+	
+	<div class="panel-heading">		
+		<p id="title-article"><h2 id="title" >Commentaires</h2></p>
+    </div>
+	
+	<div class="panel-body">		
+		<div id="article" style="">{% include 'BloggerBlogBundle:Comment:index.html.twig' with { 'comments': comments } %}</div>
+	</div> 	
+	
+	<div class="panel-heading">		
+		<p id="title-article"><h2 id="title" >Ajouter un commentaire</h2></p>
+    </div>
+	
+	<div class="panel-body">		
+		<div id="article" style="">{{ render(controller( 'BloggerBlogBundle:Comment:new', { 'blog_id': blog.id } )) }}</div>
+	</div> 	
+</div>  
+{% endblock %}

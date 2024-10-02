@@ -1,0 +1,10 @@
+parameters:
+# Blogger max latest comments
+ blogger_blog.comments.latest_comment_limit: 10
+ 
+services:
+    blogger_blog.twig.extension:
+        class: Blogger\BlogBundle\Twig\Extensions\BloggerBlogExtension
+        tags:
+            - { name: twig.extension } 
+ 
